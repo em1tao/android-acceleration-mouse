@@ -1,0 +1,46 @@
+#:kivy 2.0.0
+ScreenManager:
+    Connection:
+    Main:
+
+<Connection>:
+    name: "connection"
+    click: click
+    ipfield: ipfield
+    infolabel: infolabel
+    BoxLayout:
+        orientation: "vertical"
+        spacing: "5px"
+        MDTextField:
+            id: ipfield
+            hint_text: "ip adress"
+        MDRaisedButton:
+            id: click
+            text: "Connect"
+            on_release: root.connect()
+        MDLabel:
+            id: infolabel
+            theme_text_color: "Custom"
+            text_color: 1, 1, 1, 1
+            halign: "center"
+            text: ""
+        Widget:
+        Widget
+
+<Main>:
+    name: "main"
+    BoxLayout:
+        orientation: "vertical"
+        Widget:
+        BoxLayout:
+            orientation: "horizontal"
+            Widget:
+            Button:
+                text: "Left click"
+                on_release: root.left_click()
+            Button:
+                text: "Right click"
+                on_release: root.right_click()
+            Widget:
+        Widget:
+        Widget:
