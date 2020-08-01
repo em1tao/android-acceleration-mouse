@@ -9,16 +9,16 @@ import time
 import re
 
 
+left_click = "l".encode("utf-8")
+right_click = "r".encode("utf-8")
+
+
 class Connection(Screen):
-    left_click = "l".encode("utf-8")
-    right_click = "r".encode("utf-8")
 
     def update(self):
         content = ""
         try:
-            content = f"""{accelerometer.acceleration[0]: .3f} +
-            {accelerometer.acceleration[1]]: .3f} +
-            {accelerometer.acceleration[2]: .3f}"""
+            content = '%.3f' % accelerometer.acceleration[0] + ' %3f' % accelerometer.acceleration[1] + ' %3f' % accelerometer.acceleration[2]
         except Exception as E:
             print(E)
         to_send = content.encode('utf-8')
@@ -27,15 +27,14 @@ class Connection(Screen):
     def connect(self):
         ip = self.ipfield.text
         if re.match(r'\d+\.\d+\.\d+\.\d+', ip):
-            print("Devka")
             try:
+                global s
                 s = socket.socket()
                 s.connect((ip, 8080))
                 accelerometer.enable()
                 self.parent.current = "main"
             except Exception:
                 self.infolabel.text = "Unable to connect"
-                pass
         else:
             self.infolabel.text = "Incorrect IP"
 
