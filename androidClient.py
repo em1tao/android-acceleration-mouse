@@ -15,17 +15,8 @@ right_click = "r".encode("utf-8")
 
 class Connection(Screen):
 
-    def update(self):
-        content = ""
-        try:
-            content = '%.3f' % accelerometer.acceleration[0] + ' %3f' % accelerometer.acceleration[1] + ' %3f' % accelerometer.acceleration[2]
-        except Exception as E:
-            print(E)
-        to_send = content.encode('utf-8')
-        s.send(to_send)
-
     def connect(self):
-        ip = self.ipfield.text
+        ip = self.ip_field.text
         if re.match(r'\d+\.\d+\.\d+\.\d+', ip):
             try:
                 global s
@@ -34,12 +25,28 @@ class Connection(Screen):
                 accelerometer.enable()
                 self.parent.current = "main"
             except Exception:
-                self.infolabel.text = "Unable to connect"
+                self.info_label.text = "Unable to connect"
         else:
-            self.infolabel.text = "Incorrect IP"
+            self.info_label.text = "Incorrect IP"
 
 
-class Main(Screen):
+class Clicks(Screen):
+
+    def stop(self):
+        s.close()
+
+    def start(self):
+        Clock.schedule_interval(self.update, 1.0/18)
+        self.start_button = "Stop"
+
+    def update(self):
+        content = ""
+        try:
+            content = '%3f' % accelerometer.acceleration[0] + ' %3f' % accelerometer.acceleration[1] + ' %3f' % accelerometer.acceleration[2]
+        except Exception as E:
+            print(E)
+        to_send = content.encode('utf-8')
+        s.send(to_send)
 
     def left_click(self):
         s.send(left_click)
@@ -50,7 +57,7 @@ class Main(Screen):
 
 sm = ScreenManager(transition=NoTransition())
 sm.add_widget(Connection(name='connection'))
-sm.add_widget(Main(name='main'))
+sm.add_widget(Clicks(name='clicks'))
 
 
 class androidApp(MDApp):

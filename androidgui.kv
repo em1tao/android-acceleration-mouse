@@ -5,9 +5,9 @@ ScreenManager:
 
 <Connection>:
     name: "connection"
-    click: click
     ip_field: ip_field
-    infolabel: infolabel
+    click: click
+    info_label: info_label
     BoxLayout:
         orientation: "vertical"
         spacing: "5px"
@@ -19,7 +19,7 @@ ScreenManager:
             text: "Connect"
             on_release: root.connect()
         MDLabel:
-            id: infolabel
+            id: info_label
             theme_text_color: "Custom"
             text_color: 1, 1, 1, 1
             halign: "center"
@@ -27,10 +27,15 @@ ScreenManager:
         Widget:
         Widget
 
-<Main>:
-    name: "main"
+<Clicks>:
+    name: "clicks"
+    start_button: start_button
     BoxLayout:
         orientation: "vertical"
+        Button:
+            id: start_button
+            text: "Start"
+            on_release: root.start()
         Widget:
         BoxLayout:
             orientation: "horizontal"
