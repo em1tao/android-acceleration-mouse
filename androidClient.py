@@ -23,7 +23,7 @@ class Connection(Screen):
                 s = socket.socket()
                 s.connect((ip, 8080))
                 accelerometer.enable()
-                self.parent.current = "main"
+                self.parent.current = "clicks"
             except Exception:
                 self.info_label.text = "Unable to connect"
         else:
@@ -36,10 +36,10 @@ class Clicks(Screen):
         s.close()
 
     def start(self):
-        Clock.schedule_interval(self.update, 1.0/18)
+        Clock.schedule_interval(self.update, 1.0/10)
         self.start_button = "Stop"
 
-    def update(self):
+    def update(self, *args):
         content = ""
         try:
             content = '%3f' % accelerometer.acceleration[0] + ' %3f' % accelerometer.acceleration[1] + ' %3f' % accelerometer.acceleration[2]

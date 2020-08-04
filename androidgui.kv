@@ -1,12 +1,10 @@
-#:kivy 2.0.0
 ScreenManager:
     Connection:
-    Main:
+    Clicks:
 
 <Connection>:
     name: "connection"
     ip_field: ip_field
-    click: click
     info_label: info_label
     BoxLayout:
         orientation: "vertical"
@@ -14,8 +12,8 @@ ScreenManager:
         MDTextField:
             id: ip_field
             hint_text: "ip adress"
+            text: ""
         MDRaisedButton:
-            id: click
             text: "Connect"
             on_release: root.connect()
         MDLabel:
