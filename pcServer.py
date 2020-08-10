@@ -25,4 +25,4 @@ while True:
     elif data[0] == "ru":
         pyautogui.mouseUp(button="right")
     else:
-        pyautogui.moveTo(abs(data.split()[0]*20), abs(data.split()[1]*20))
+        pyautogui.moveTo(abs(int(data.split()[0]*20)), abs(int(data.split()[1]*20)))
