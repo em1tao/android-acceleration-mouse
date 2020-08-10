@@ -38,13 +38,13 @@ class Clicks(Screen):
         s.close()
 
     def start(self):
-        Clock.schedule_interval(self.update, 1.0/10)
+        Clock.schedule_interval(self.update, 1.0/5)
         self.start_button = "Stop"
 
     def update(self, *args):
         content = ""
         try:
-            content = '%3f ' % compass.field[0] + '%3f ' % compass.field[1] + '%3f ' % compass.field[2]
+            content = '%3f ' % compass.field[0] + '%3f ' % compass.field[1]
         except Exception as E:
             print(E)
         to_send = content.encode('utf-8')

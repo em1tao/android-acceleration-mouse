@@ -9,6 +9,7 @@ s.listen(1)
 print(f"{hostname} listens on port 8080")
 conn, addr = s.accept()
 print(addr)
+
 while True:
     encoded_data = conn.recv(1024)
     if not encoded_data:
@@ -24,4 +25,4 @@ while True:
     elif data[0] == "ru":
         pyautogui.mouseUp(button="right")
     else:
-        print(data.split())
+        pyautogui.moveTo(abs(data.split()[0]*20), abs(data.split()[1]*20))
