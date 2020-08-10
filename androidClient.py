@@ -45,7 +45,7 @@ class Clicks(Screen):
     def update(self, *args):
         content = ""
         try:
-            content = '%3f ' % accelerometer.acceleration[0] + '%3f ' % accelerometer.acceleration[1] + '%3f ' % accelerometer.acceleration[2] + '%3f' % compass.field[0] + '%3f' % compass.field[1] + '%3f' % compass.field[2]
+            content = '%3f ' % accelerometer.acceleration[0] + '%3f ' % accelerometer.acceleration[1] + '%3f ' % accelerometer.acceleration[2] + '%3f ' % compass.field[0] + '%3f ' % compass.field[1] + '%3f ' % compass.field[2]
         except Exception as E:
             print(E)
         to_send = content.encode('utf-8')
