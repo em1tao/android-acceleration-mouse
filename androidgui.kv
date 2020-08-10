@@ -40,10 +40,12 @@ ScreenManager:
             Widget:
             Button:
                 text: "Left click"
-                on_release: root.left_click()
+                on_press: root.left_down()
+                on_release: root.left_up()
             Button:
                 text: "Right click"
-                on_release: root.right_click()
+                on_press: root.right_down()
+                on_release: root.right_up()
             Widget:
         Widget:
         Widget:

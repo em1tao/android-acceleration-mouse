@@ -13,5 +13,11 @@ while True:
     if not encoded_data:
         break
     data = encoded_data.decode("utf-8").split()
-    print(data)
-    
+    if data == "ld":
+        pyautogui.mouseDown()
+    elif data == "rd":
+        pyautogui.mouseDown(button="right")
+    elif data == "lu":
+        pyautogui.mouseUp()
+    elif data == "ru":
+        pyautogui.mouseUp(button="right")
